@@ -6,8 +6,8 @@ import com.alibaba.otter.canal.common.utils.AddressUtils;
 import com.alibaba.otter.canal.protocol.CanalEntry;
 import com.alibaba.otter.canal.protocol.CanalEntry.*;
 import com.alibaba.otter.canal.protocol.Message;
-import com.kland.wd.dto.EsAccMsgDto;
-import com.kland.wd.service.AccMsgRepository;
+import com.kland.wd.vo.EsAccMsgDto;
+import com.kland.wd.service.AccMsgESRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class SimpleCanalClientExample {
     private static String syntableName;
 
     @Autowired
-    AccMsgRepository accMsgESRepository;
+    AccMsgESRepository accMsgESRepository;
 
     public void synTable() {
         // 创建链接

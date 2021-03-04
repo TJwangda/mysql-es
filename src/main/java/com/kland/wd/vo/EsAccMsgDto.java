@@ -1,4 +1,4 @@
-package com.kland.wd.dto;
+package com.kland.wd.vo;
 
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.Document;
