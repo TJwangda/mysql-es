@@ -41,14 +41,15 @@ public class MySqlSynEsController {
      */
     @GetMapping("/allSynTable")
     public String allSynTable(){
-        simpleCanalClientExample.allSynTable();
+//        simpleCanalClientExample.allSynTable();
         return "导入成功";
     }
 
     @GetMapping("/test")
     public String test(){
-        accountMsgService.selectAll();
+//        accountMsgService.selectAll();
 //        accountUserService.findMaxId();
+        accountMsgService.synMysql2Es();
         return "hello world";
     }
 

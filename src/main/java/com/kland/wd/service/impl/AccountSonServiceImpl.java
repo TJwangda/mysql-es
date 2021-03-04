@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
  * @since 2021-03-04
  */
 @Service
-//public class AccountSonServiceImpl<AccountSonMapper extends BaseMapper<AccountSon>> extends ServiceImpl<AccountSonMapper, AccountSon> implements AccountSonService {
 public class AccountSonServiceImpl<AccountSonMapper extends BaseMapper<AccountSon>> extends ServiceImpl<AccountSonMapper, AccountSon>{
 
 }

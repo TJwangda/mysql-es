@@ -21,15 +21,18 @@ import java.util.List;
  * @since 2021-03-04
  */
 @Service
-//public class AccountUserServiceImpl extends ServiceImpl<AccountUserMapper, AccountUser> implements AccountUserService {
 public class AccountUserServiceImpl extends ServiceImpl<AccountUserMapper, AccountUser>{
     @Autowired
     AccountUserMapper accountUserMapper;
 
+    /**
+     * 查询最大用户id
+     * @return
+     */
     public int findMaxId(){
         int maxId = 0;
         QueryWrapper<AccountUser> wrapper = new QueryWrapper();
-        wrapper.orderByDesc("id");
+        wrapper.orderByDesc("id").last("limit 1 ");
         List<AccountUser> users = accountUserMapper.selectList(wrapper);
         AccountUser user = users.get(0);
         maxId = user.getId();
