@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.generator.config.PackageConfig;
 import com.baomidou.mybatisplus.generator.config.StrategyConfig;
 import com.baomidou.mybatisplus.generator.config.rules.DateType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-import com.kland.wd.service.AccountMsgService;
+import com.kland.wd.service.impl.AccountMsgServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,7 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class WdApplicationTest2 {
 
     @Autowired
-    AccountMsgService accountMsgService;
+    AccountMsgServiceImpl accountMsgService;
 
     @Test
     public void test(){

@@ -1,9 +1,9 @@
 package com.kland.wd.controller;
 
-import com.kland.wd.service.AccountUserService;
+import com.kland.wd.service.impl.AccountUserServiceImpl;
 import com.kland.wd.vo.EsAccMsgDto;
 import com.kland.wd.service.AccMsgESRepository;
-import com.kland.wd.service.AccountMsgService;
+import com.kland.wd.service.impl.AccountMsgServiceImpl;
 import com.kland.wd.util.SimpleCanalClientExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +19,9 @@ public class MySqlSynEsController {
     @Autowired
     AccMsgESRepository accMsgESRepository;
     @Autowired
-    AccountMsgService accountMsgService;
+    AccountMsgServiceImpl accountMsgService;
     @Autowired
-    AccountUserService accountUserService;
+    AccountUserServiceImpl accountUserService;
     @Autowired
     SimpleCanalClientExample simpleCanalClientExample;
 
@@ -47,8 +47,8 @@ public class MySqlSynEsController {
 
     @GetMapping("/test")
     public String test(){
-//        accountMsgService.selectAll();
-        accountUserService.findMaxId();
+        accountMsgService.selectAll();
+//        accountUserService.findMaxId();
         return "hello world";
     }
 
