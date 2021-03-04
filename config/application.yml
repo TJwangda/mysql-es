@@ -1,0 +1,68 @@
+server:
+  port: 8086 #测试
+  servlet:
+    context-path: /mysqles
+  #  port: 8089 # 正式端口
+
+
+spring:
+# druid连接池配置s
+    datasource:
+      name: druid
+      # 配置数据源类型
+      type: com.alibaba.druid.pool.DruidDataSource
+      druid:
+#        driver-class-name: com.mysql.jdbc.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
+#        url: jdbc:mysql://localhost:3306/yangbendev2?useUnicode=true&characterEncoding=UTF-8
+        url: jdbc:mysql://localhost:3306/yangbendev2? useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+        username: root
+        password: 123456
+        # 初始化，最小，最大连接数
+        initialSize: 3
+        minidle: 3
+        maxActive: 18
+        # 获取数据库连接等待的超时时间
+        maxWait: 60000
+        # 配置多久进行一次检测，检测需要关闭的空闲连接 单位毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        validationQuery: SELECT 1 FROM dual
+        # 配置监控统计拦截的filters,去掉后，监控界面的sql无法统计
+        filters: stat,wall,log4j
+# druid连接池配置e
+# es 配置
+    data:
+      elasticsearch:
+        cluster-name: elasticsearch
+        cluster-nodes: 127.0.0.1:9300
+      #cluster-nodes: hadoop137:9300,hadoop138:9300,hadoop139:9300
+
+# mybatis-plus
+mybatis-plus:
+  type-aliases-package: classpath:com.kland.wd.dto
+#  mapper-locations: file:config/xml/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+      field-strategy: not_empty
+      #驼峰下划线转换
+      column-underline: true
+      #逻辑删除配置
+      logic-delete-value: 0
+      logic-not-delete-value: 1
+      db-type: mysql
+    refresh: false
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+
+# canal监控的表
+syntableName: yangbendev2.account_msg,yangbendev2.account_user
+
+logging:
+  config: config/logback-boot.xml
+  level:
+    com:
+      kland:
+        stmybatis:
+          mapper: debug
