@@ -41,7 +41,7 @@ public class MySqlSynEsController {
      */
     @GetMapping("/allSynTable")
     public String allSynTable(){
-//        simpleCanalClientExample.allSynTable();
+        accountMsgService.synMysql2Es();//账号表
         return "导入成功";
     }
 

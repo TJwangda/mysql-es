@@ -2,6 +2,17 @@
 
 1. es不支持多表联查
 
+2. 步骤
+
+   ~~~shell
+   1、修改mysql和canal的配置，启动canal。
+   2、启动es
+   3、写一个测试的方法，测试canal能从mysql的binlog正常导入es
+   4、启动es-head查看索引库是否建立。
+   ~~~
+
+3. sd
+
 # canal
 
 > 简介
@@ -87,10 +98,27 @@ canal.instance.master.address=127.0.0.1:3306
 
 # 增量同步 canal读取binlog
 
+
+
+
+
+# 全量同步 三百万 
+
++ 接口分批导入实现
+
+
+
+# 疑问
 > 如果canal挂了或者同步的服务挂了，此时mysql 表中进行数据操作，重启canal还能继续从上次拉取的位置继续吗？
 
-不管是服务停了还是canal挂了，重启以后都可以继续从上次中断的地方继续拉取。
+​	不管是服务停了还是canal挂了，重启以后都可以继续从上次中断的地方继续拉取。
 
+> 如果mysql表中之前有存量数据的binlog，canal会同步吗？canal是从什么时候开始同步的。
 
-
-# 全量同步？三百万？
+```shell
+原理相对比较简单：
+canal模拟mysql slave的交互协议，伪装自己为mysql slave，向mysql master发送dump协议
+mysql master收到dump请求，开始推送binary log给slave(也就是canal)
+canal解析binary log对象(原始为byte流)
+```
+https://blog.csdn.net/u013256816/article/details/52475190
